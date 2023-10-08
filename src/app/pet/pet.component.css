@@ -1,0 +1,16 @@
+div.pet-holder {
+    overflow: hidden;
+    color: black;
+    border: 2px solid;
+    border-color: blueviolet;
+    margin:auto;
+    padding: 10px;
+    justify-content: space-evenly;
+}
+
+div.pet-holder_child {
+    float: left;
+    width: 33%;
+    box-sizing: border-box;
+    padding: 5px;
+}

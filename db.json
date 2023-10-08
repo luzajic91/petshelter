@@ -1,0 +1,62 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Gojko",
+      "surename": "Gojkic",
+      "isadmin": true,
+      "username": "admin1",
+      "password": "admin1"
+    },
+    {
+      "id": 2,
+      "name": "Dvojko",
+      "surename": "Dvojkic",
+      "isadmin": false,
+      "username": "user1",
+      "password": "user1"
+    }
+  ],
+  "pets": [
+    {
+      "id": 1,
+      "name": "Panta",
+      "type": "taby",
+      "age": 8,
+      "pic": "someurl",
+      "adopted": false
+    },
+    {
+      "id": 2,
+      "name": "Milojko",
+      "type": "taby",
+      "age": 9,
+      "pic": "someurl",
+      "adopted": false
+    },
+    {
+      "id": 3,
+      "name": "Zuca",
+      "type": "orange",
+      "age": 2,
+      "pic": "someurl",
+      "adopted": false
+    },
+    {
+      "id": 4,
+      "name": "Torta",
+      "type": "tortie",
+      "age": 1,
+      "pic": "someurl",
+      "adopted": false
+    },
+    {
+      "id": 5,
+      "name": "asdasd",
+      "type": "sadasd",
+      "age": 33333,
+      "pic": "a",
+      "adopted": false
+    }
+  ]
+}

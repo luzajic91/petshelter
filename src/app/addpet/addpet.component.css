@@ -1,0 +1,19 @@
+div.form-holder {
+    display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: space-evenly;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 10px;
+    margin-right: 10px;
+    border: 2px solid;
+    border-color: blueviolet;
+}
+
+div.pet-holder_child {
+    float: left;
+    width: 33%;
+    box-sizing: border-box;
+    padding: 5px;
+}

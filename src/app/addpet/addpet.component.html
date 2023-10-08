@@ -1,0 +1,23 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="form-holder">
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" name="name" [(ngModel)]="name" id="name" placeholder="Pet name"/>
+        </div>
+        <div>
+            <label for="type">Type: </label>
+            <input type="text" name="type" [(ngModel)]="type" id="type" placeholder="Pet type"/>
+        </div>
+        <div>
+            <label for="age">Age: </label>
+            <input type="number" name="age" [(ngModel)]="age" id="age" placeholder="Pet age"/>
+        </div>
+        <div>
+            <label for="age">Pic: </label>
+            <input type="text" name="pic" [(ngModel)]="pic" id="pic" placeholder="Pet pic"/>
+        </div>
+        <button mat-button>Save</button>
+    </div>
+    
+    
+</form>

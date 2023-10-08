@@ -1,0 +1,17 @@
+<div class="pet-holder">
+    <div class="pet-holder_child">
+        <p>{{pet.pic}}</p>
+    </div>
+    <div class="pet-holder_child">
+        <p>{{pet.id}}</p>
+        <p>{{pet.name}}</p>
+        <p>{{pet.age}}</p>
+        <p>{{pet.type}}</p>
+    </div>
+    <div class="pet-holder_child">
+        <button mat-button>Edit</button>
+        <button mat-button (click)="onDelete(pet)">Delete</button>
+        <button mat-button>Adopt</button>
+    </div>
+</div>
+
