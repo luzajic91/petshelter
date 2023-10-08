@@ -26,6 +26,7 @@ export class PetComponent implements OnInit {
 
   enableEditing() {
     this.isEditing = true;
+    //nova iymena koja bi se trebala videti na gitu
   }
   
   cancelEditing() {
