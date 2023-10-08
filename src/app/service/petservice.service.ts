@@ -32,4 +32,8 @@ export class PetserviceService {
   addPet(pet: Pet):Observable<Pet> {
     return this.http.post<Pet>(this.apiUrl, pet, httpOptions);
   }
+
+  editPet(pet: Pet):Observable<Pet> {
+    return this.http.put<Pet>(this.apiUrl, pet, httpOptions);
+  }
 }

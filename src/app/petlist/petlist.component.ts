@@ -28,4 +28,9 @@ export class PetlistComponent implements OnInit {
     console.log(pet);
     this.petService.addPet(pet).subscribe((pet) => (this.pets.push(pet)));
   }
+
+  editPet(pet: Pet ) {
+    console.log(pet);
+    //this.petService.editPet(pet).subscribe((pet));
+  }
 }

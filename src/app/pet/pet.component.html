@@ -1,4 +1,4 @@
-<div class="pet-holder">
+<div class="pet-holder" *ngIf="!isEditing">
     <div class="pet-holder_child">
         <p>{{pet.pic}}</p>
     </div>
@@ -9,9 +9,24 @@
         <p>{{pet.type}}</p>
     </div>
     <div class="pet-holder_child">
-        <button mat-button>Edit</button>
+        <button mat-button (click)="enableEditing()">Edit</button>
         <button mat-button (click)="onDelete(pet)">Delete</button>
         <button mat-button>Adopt</button>
+    </div>
+</div>
+<div class="pet-holder" *ngIf="isEditing">
+    <div class="pet-holder_child">
+        <p>{{pet.pic}}</p>
+    </div>
+    <div class="pet-holder_child">
+        <input [(ngModel)]="editedPet.name" placeholder="{{ pet.name }}" />
+        <input [(ngModel)]="editedPet.age" placeholder="{{ pet.age }}" />
+        <input [(ngModel)]="editedPet.type" placeholder="{{ pet.type }}" />
+    </div>
+    <div class="pet-holder_child">
+        <button mat-button (click)="cancelEditing()">Cancel</button>
+        <button mat-button (click)="onDelete(pet)">Delete</button>
+        <button mat-button>Save</button>
     </div>
 </div>
 

@@ -26,10 +26,13 @@ export class PetComponent implements OnInit {
 
   enableEditing() {
     this.isEditing = true;
+    console.log(this.isEditing);
+    this.editedPet = {...this.pet};
     //nova iymena koja bi se trebala videti na gitu
   }
   
   cancelEditing() {
     this.isEditing = false;
+    console.log(this.isEditing);
   }
 }
