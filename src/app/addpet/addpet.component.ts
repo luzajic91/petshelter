@@ -26,7 +26,7 @@ export class AddpetComponent implements OnInit {
       return;
     }
 
-    const newPet = new Pet(5, this.name, this.type, this.age, this.pic, false);
+    const newPet = {id: null, name: this.name, type: this.type, age: this.age, pic: this.pic, adopted: false}
 
     this.onAddPet.emit(newPet);
     

@@ -16,8 +16,21 @@ export class PetlistComponent implements OnInit {
   pet: Pet;
 
   ngOnInit(): void {
-    this.petService.fetchPet().subscribe((data) => {this.pets = data});
+    this.petService.fetchPets().subscribe((data) => {
+      this.pets = data;
+      this.setPetsIds(this.pets);
+
+    });
   }
+
+  setPetsIds(pets: Pet[]) {
+    const ids:any = []
+    pets.forEach(pet => {
+      ids.push(pet.id);
+    })
+    this.petService.setState(ids);
+    console.log(this.petService.getState());
+  } 
 
   deletePet(pet: Pet) {
     console.log(pet);
@@ -25,8 +38,14 @@ export class PetlistComponent implements OnInit {
   }
 
   addPet(pet: Pet) {
-    console.log(pet);
-    this.petService.addPet(pet).subscribe((pet) => (this.pets.push(pet)));
+    const newId = this.petService.getAvailableId();
+    pet.id = newId;
+    this.petService.addPet(pet).subscribe((pet) => { 
+      this.pets.push(pet)
+      const newState = this.petService.getState();
+      newState.push(pet.id);      
+      this.petService.setState(newState);
+    });
   }
 
   editPet(pet: Pet ) {

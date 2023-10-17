@@ -11,6 +11,7 @@ export class PetComponent implements OnInit {
 
   @Input() pet: Pet;
   @Output() onDeletePet: EventEmitter<Pet> = new EventEmitter();
+  @Output() onEditPet: EventEmitter<Pet> = new EventEmitter();
   editedPet: Pet;
   isEditing = false;
 
@@ -27,12 +28,17 @@ export class PetComponent implements OnInit {
   enableEditing() {
     this.isEditing = true;
     console.log(this.isEditing);
-    this.editedPet = {...this.pet};
-    //nova iymena koja bi se trebala videti na gitu
+
   }
   
   cancelEditing() {
     this.isEditing = false;
     console.log(this.isEditing);
+  }
+
+  onEdit(pet: Pet) {
+    console.log(pet);
+    this.onEditPet.emit(pet);
+    this.editedPet = {...this.pet};
   }
 }

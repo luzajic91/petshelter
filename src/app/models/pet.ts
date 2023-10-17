@@ -1,5 +1,5 @@
 export class Pet {
-    id: number;
+    id: number | null;
     name: string;
     type:string;
     age: number;
