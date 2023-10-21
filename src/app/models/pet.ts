@@ -20,6 +20,5 @@ export class Pet {
         this.age = age;
         this.pic = pic;
         this.adopted = adopted;
-    }
-    
+    } 
 }

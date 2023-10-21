@@ -13,6 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { PeteditComponent } from './petedit/petedit.component';
 import { AddpetComponent } from './addpet/addpet.component';
 
+import { petReducer } from './state/pet.reducer';
+import { StoreModule } from '@ngrx/store';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { AddpetComponent } from './addpet/addpet.component';
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({pets: petReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]
