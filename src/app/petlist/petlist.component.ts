@@ -4,7 +4,7 @@ import { Pet } from '../models/pet';
 import { Store } from '@ngrx/store';
 import { getPets, selectPets } from '../state/pet.selector';
 import * as PetActions from '../state/pet.actions';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
@@ -14,9 +14,9 @@ import { Observable } from 'rxjs';
 })
 export class PetlistComponent implements OnInit {
 
-  //pets = this.store.select(getPets);
+  //pets2: any;
   pets2: Observable<Pet[]>;
-
+  petList: Pet[] = [];
 
   constructor(private petService: PetserviceService, private store: Store) { }
 
@@ -25,39 +25,35 @@ export class PetlistComponent implements OnInit {
   pet: Pet;
 
   ngOnInit(): void {
-    this.petService.fetchPets().subscribe((data) => {
-      this.pets = data;
-      this.setPetsIds(this.pets);
-    });
-
-    this.pets2 = this.store.select(getPets);
-    this.pets2.subscribe(data => {console.log(data)})
-
-    console.log(this.pets2.forEach((data) => data));
     
-    this.petService.fetchPets().subscribe((pets) => 
-    this.store.dispatch(PetActions.loadPets({pets})));
+     this.petService.fetchPets().subscribe((pets) => {
+      this.store.dispatch(PetActions.loadPets({pets}));
+      this.petList = pets;
+      console.log(this.petList);
+     })
+      
   }
 
   setPetsIds(pets: Pet[]) {
     const ids:any = []
+    console.log('Type of pets:', typeof pets);
     pets.forEach(pet => {
       ids.push(pet.id);
+      console.log('Type of pets:', pet.id);
     })
     this.petService.setState(ids);
-    console.log(this.petService.getState());
   } 
 
   deletePet(pet: Pet) {
     console.log(pet);
-    this.petService.deletePet(pet).subscribe(() => this.pets = this.pets.filter((p: Pet) => p.id !== pet.id))
+    this.petService.deletePet(pet).subscribe(() => this.petList = this.petList.filter((p: Pet) => p.id !== pet.id))
   }
 
   addPet(pet: Pet) {
     const newId = this.petService.getAvailableId();
     pet.id = newId;
     this.petService.addPet(pet).subscribe((pet) => { 
-      this.pets.push(pet)
+      this.petList = [...this.petList, pet];
       const newState = this.petService.getState();
       newState.push(pet.id);      
       this.petService.setState(newState);

@@ -3,7 +3,8 @@
         <app-addpet (onAddPet)="addPet($event)"></app-addpet>
     </div>
     <div class="pet-holder_child">
-        <app-pet *ngFor="let pet of pets" [pet] = "pet" (onDeletePet)="deletePet(pet)"></app-pet>
+        <!-- <app-pet *ngFor="let pet of pets" [pet] = "pet" (onDeletePet)="deletePet(pet)"></app-pet> -->
+        <app-pet *ngFor="let pet of petList" [pet] = "pet" (onDeletePet)="deletePet(pet)"></app-pet>
     </div>
     
 </div>
