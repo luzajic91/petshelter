@@ -5,7 +5,9 @@ export const addPet = createAction('[Pet] Add', props<{ pet: Pet }>());
 export const updatePet = createAction('[Pet] Update', props<{ pet: Pet }>());
 export const deletePet = createAction('[Pet] Delete', props<{ id: number }>());
 
-export const loadPets = createAction('[Pet] Load', props <{pets: Pet[]}>());
+export const loadPets = createAction('[Pet] Load');
+export const loadedPets = createAction('[Pet] Loaded', props <{pets: Pet[]}>());
+
 export const loadPetsFailure = createAction('[Pet] Load');
 
 //export const loadPets = createAction('[Pet] Load');

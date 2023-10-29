@@ -19,97 +19,10 @@
   ],
   "pets": [
     {
-      "id": 3,
-      "name": "gasga",
-      "type": "agsasga",
-      "age": 23,
-      "pic": "asgasg",
-      "adopted": false
-    },
-    {
-      "id": 4,
-      "name": "zzz",
-      "type": "ggg",
-      "age": 212,
-      "adopted": false
-    },
-    {
-      "id": 9,
-      "name": "ouiou",
-      "type": "yuouo",
-      "age": 434,
-      "pic": "ddd",
-      "adopted": false
-    },
-    {
-      "id": 10,
-      "name": "asg",
-      "type": "gsa",
-      "age": 22,
-      "pic": "fhfh",
-      "adopted": false
-    },
-    {
-      "id": 11,
-      "name": "gdg",
-      "type": "dgsd",
-      "age": 234,
-      "pic": "2g",
-      "adopted": false
-    },
-    {
-      "id": 12,
-      "name": "ngng",
-      "type": "ngng",
-      "age": 2,
-      "pic": "23gr",
-      "adopted": false
-    },
-    {
-      "id": 13,
-      "name": "ggg",
-      "type": "zzz",
-      "age": 1,
-      "pic": "asasgf",
-      "adopted": false
-    },
-    {
-      "id": 1,
-      "name": "g",
-      "type": "gz",
-      "age": 21,
-      "pic": "1",
-      "adopted": false
-    },
-    {
-      "id": 14,
-      "name": "gegege",
-      "type": "gege",
-      "age": 123,
-      "pic": "adsgasg",
-      "adopted": false
-    },
-    {
-      "id": 5,
-      "name": "gagsga",
-      "type": "djdijdi",
-      "age": 232,
-      "pic": "123213",
-      "adopted": false
-    },
-    {
-      "id": 7,
-      "name": "amsterdam",
-      "type": "123",
-      "age": 123,
-      "pic": "123",
-      "adopted": false
-    },
-    {
       "id": 8,
-      "name": "xxx",
-      "type": "xxx",
-      "age": 123,
+      "name": "xxx223",
+      "type": "xxx2223",
+      "age": 1232223,
       "pic": "123",
       "adopted": false
     },
@@ -119,6 +32,22 @@
       "type": "321",
       "age": 312,
       "pic": "123",
+      "adopted": false
+    },
+    {
+      "id": 17,
+      "name": "sojsa",
+      "type": "sojsa",
+      "age": 123,
+      "pic": "123",
+      "adopted": false
+    },
+    {
+      "id": 18,
+      "name": "novoime",
+      "type": "jos noviji model",
+      "age": 123321,
+      "pic": "1111111111",
       "adopted": false
     }
   ]

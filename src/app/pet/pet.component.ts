@@ -12,12 +12,15 @@ export class PetComponent implements OnInit {
   @Input() pet: Pet;
   @Output() onDeletePet: EventEmitter<Pet> = new EventEmitter();
   @Output() onEditPet: EventEmitter<Pet> = new EventEmitter();
-  editedPet: Pet;
+  //editedPet: Pet;
+  editedPet: any = {};
   isEditing = false;
+  editablePet: Pet;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.editablePet = {...this.pet};
   }
 
   onDelete(pet: Pet) {
@@ -27,6 +30,8 @@ export class PetComponent implements OnInit {
 
   enableEditing() {
     this.isEditing = true;
+    this.editedPet = this.pet;
+    console.log(this.pet);
     console.log(this.isEditing);
 
   }
@@ -36,9 +41,18 @@ export class PetComponent implements OnInit {
     console.log(this.isEditing);
   }
 
-  onEdit(pet: Pet) {
-    console.log(pet);
-    this.onEditPet.emit(pet);
-    this.editedPet = {...this.pet};
+  // onEdit(pet: Pet) {
+  //   this.editedPet = pet;
+  //   console.log(pet);
+  //   console.log(this.editedPet);
+  //   this.onEditPet.emit(pet);s
+  //   //this.editedPet = {...this.pet};
+  // }
+
+  onEdit(name: string, age: number, type: string) {
+    const newPet = {id: this.pet.id, name: name, type: type, age: age, pic: this.pet.pic, adopted: this.pet.adopted}
+    console.log(newPet);
+    this.onEditPet.emit(newPet);
+    this.isEditing = !this.isEditing;
   }
 }

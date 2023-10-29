@@ -19,14 +19,15 @@
         <p>{{pet.pic}}</p>
     </div>
     <div class="pet-holder_child">
-        <input [(ngModel)]="editedPet.name" placeholder="{{ pet.name }}" />
-        <input [(ngModel)]="editedPet.age" placeholder="{{ pet.age }}" />
-        <input [(ngModel)]="editedPet.type" placeholder="{{ pet.type }}" />
+        <input [(ngModel)]="editedPet.name" placeholder="{{ pet.name }}" #nameInput/>
+        <input [(ngModel)]="editedPet.age" placeholder="{{ pet.age }}" #ageInput/>
+        <input [(ngModel)]="editedPet.type" placeholder="{{ pet.type }}" #typeInput/>
     </div>
     <div class="pet-holder_child">
         <button mat-button (click)="cancelEditing()">Cancel</button>
         <button mat-button (click)="onDelete(pet)">Delete</button>
-        <button mat-button>Save</button>
+        <button mat-button (click)="onEdit(nameInput.value, +ageInput.value, typeInput.value)">Save</button>
+        <!-- <button mat-button (click)="onEdit(editedPet)">Save</button> -->
     </div>
 </div>
 

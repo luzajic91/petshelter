@@ -57,6 +57,7 @@ export class PetserviceService {
   }  
 
   editPet(pet: Pet): Observable<Pet> {
-    return this.http.put<Pet>(this.apiUrl, pet, httpOptions);
+    const url = `${this.apiUrl}/${pet.id}`;
+    return this.http.put<Pet>(url, pet, httpOptions);
   }
 }

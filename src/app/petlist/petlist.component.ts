@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PetserviceService } from '../service/petservice.service';
 import { Pet } from '../models/pet';
 import { Store } from '@ngrx/store';
-import { getPets, selectPets } from '../state/pet.selector';
+// import { getPets, selectPets } from '../state/pet.selector';
+import { selectPets } from '../state/pet.selector';
 import * as PetActions from '../state/pet.actions';
 import { Observable, of } from 'rxjs';
 
@@ -14,28 +15,26 @@ import { Observable, of } from 'rxjs';
 })
 export class PetlistComponent implements OnInit {
 
-  //pets2: any;
   pets2: Observable<Pet[]>;
   petList: Pet[] = [];
 
   constructor(private petService: PetserviceService, private store: Store) { }
 
   pets: any;
-  
   pet: Pet;
 
   ngOnInit(): void {
-    
      this.petService.fetchPets().subscribe((pets) => {
-      this.store.dispatch(PetActions.loadPets({pets}));
+      this.store.dispatch(PetActions.loadedPets({pets}));
       this.petList = pets;
       console.log(this.petList);
      })
-      
+     this.pets = this.store.select(selectPets);
+     this.store.dispatch(PetActions.loadPets())
   }
 
   setPetsIds(pets: Pet[]) {
-    const ids:any = []
+    const ids:any = [];
     console.log('Type of pets:', typeof pets);
     pets.forEach(pet => {
       ids.push(pet.id);
@@ -46,7 +45,7 @@ export class PetlistComponent implements OnInit {
 
   deletePet(pet: Pet) {
     console.log(pet);
-    this.petService.deletePet(pet).subscribe(() => this.petList = this.petList.filter((p: Pet) => p.id !== pet.id))
+    this.petService.deletePet(pet).subscribe(() => this.petList = this.petList.filter((p: Pet) => p.id !== pet.id));
   }
 
   addPet(pet: Pet) {
@@ -60,8 +59,8 @@ export class PetlistComponent implements OnInit {
     });
   }
 
-  editPet(pet: Pet ) {
+  editPet(pet: Pet) {
     console.log(pet);
-    //this.petService.editPet(pet).subscribe((pet));
+    this.store.dispatch(PetActions.updatePet({pet}));
   }
 }

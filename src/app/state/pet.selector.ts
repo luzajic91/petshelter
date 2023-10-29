@@ -2,8 +2,11 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { AppState } from './app.state';
 import { Pet } from '../models/pet';
 
-export const selectPets2 = createFeatureSelector<Pet[]>('pets');
+// export const selectPets = createFeatureSelector<Pet[]>('pets');
+// export const getPets = createSelector(selectPets, (pets) => pets);
 
-export const selectPets = (state: AppState) => state.pets;
-
-export const getPets = createSelector(selectPets2, (pets) => pets);
+const selectPetState = createFeatureSelector<AppState>('pets');
+export const selectPets = createSelector(
+    selectPetState,
+    (state) => state.pets
+)

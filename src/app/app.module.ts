@@ -15,6 +15,8 @@ import { AddpetComponent } from './addpet/addpet.component';
 
 import { petReducer } from './state/pet.reducer';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { PetEffects } from './state/pet.effects';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { StoreModule } from '@ngrx/store';
     MatSlideToggleModule,
     MatButtonModule,
     FormsModule,
-    StoreModule.forRoot({pets: petReducer})
+    StoreModule.forRoot({pets: petReducer}),
+    EffectsModule.forRoot([PetEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
