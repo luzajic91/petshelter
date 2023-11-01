@@ -7,7 +7,7 @@ export class Pet {
     adopted: boolean;
 
     constructor(
-        id: number,
+        id: number | null = null,
         name: string,
         type:string,
         age: number,

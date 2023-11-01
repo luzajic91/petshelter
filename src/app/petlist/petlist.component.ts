@@ -18,19 +18,22 @@ export class PetlistComponent implements OnInit {
   pets2: Observable<Pet[]>;
   petList: Pet[] = [];
 
-  constructor(private petService: PetserviceService, private store: Store) { }
+  constructor(private petService: PetserviceService, private store: Store) { 
+    this.pets = this.store.select(selectPets);
+  }
 
   pets: any;
   pet: Pet;
 
   ngOnInit(): void {
-     this.petService.fetchPets().subscribe((pets) => {
-      this.store.dispatch(PetActions.loadedPets({pets}));
-      this.petList = pets;
-      console.log(this.petList);
-     })
-     this.pets = this.store.select(selectPets);
+    //  this.petService.fetchPets().subscribe((pets) => {
+    //   this.store.dispatch(PetActions.loadedPets({pets}));
+    //   this.petList = pets;
+    //   console.log(this.petList);
+    //  })
+     
      this.store.dispatch(PetActions.loadPets())
+
   }
 
   setPetsIds(pets: Pet[]) {
