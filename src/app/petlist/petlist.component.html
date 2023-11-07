@@ -4,7 +4,7 @@
     </div>
     <div class="pet-holder_child">
         <!-- <app-pet *ngFor="let pet of pets" [pet] = "pet" (onDeletePet)="deletePet(pet)"></app-pet> -->
-        <app-pet *ngFor="let pet of pets | async" [pet] = "pet" (onDeletePet)="deletePet(pet)" (onEditPet)="editPet($event)"></app-pet>
+        <app-pet *ngFor="let pet of pets | async" [pet] = "pet" (onDeletePet)="deletePet($event)" (onEditPet)="editPet($event)"></app-pet>
     </div>
     
 </div>

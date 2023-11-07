@@ -12,11 +12,18 @@ export const petReducer = createReducer(
     on(PetActions.loadedPets, (state, { pets }) => {
         return { ...state, pets }
     }),
-    on(PetActions.addPet, (state, { pet }) => (
-        { ...state, pets: { ...state.pets, pet } 
+    on(PetActions.addPetSuccess, (state, { pet }) => (
+        { ...state, pets: [ ...state.pets, pet ] 
     })),
-    on(PetActions.updatePet, (state, { pet }) => ({
+    on(PetActions.updatePetSuccess, (state, { pet }) => ({
             ...state, pets: state.pets.map((p) =>
                 p.id == pet.id ? pet : p)
+    })),
+    on(PetActions.updatePetFailure, (state, {error}) => ({
+        ...state
+    })),
+    on(PetActions.deletePetSuccess, (state, {id}) => ({
+        ...state,
+        pets: state.pets.filter((pet) => pet.id !== id)
     }))
 );

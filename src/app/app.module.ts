@@ -17,6 +17,8 @@ import { petReducer } from './state/pet.reducer';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { PetEffects } from './state/pet.effects';
+import { NameValidatorDirective } from './name-validator.directive';
+import { AgeValidatorDirective } from './age-validator.directive';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { PetEffects } from './state/pet.effects';
     PetComponent,
     PetlistComponent,
     PeteditComponent,
-    AddpetComponent
+    AddpetComponent,
+    NameValidatorDirective,
+    AgeValidatorDirective
   ],
   imports: [
     BrowserModule,

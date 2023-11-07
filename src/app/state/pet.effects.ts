@@ -20,12 +20,39 @@ export class PetEffects {
           map((pets) => PetActions.loadedPets({ pets }), console.log('poruka iz prodavnice'))
         ))));
 
-  editPet$ = createEffect(() =>
+  updatePet$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PetActions.updatePet),
       switchMap(({ pet }) =>
-        this.petService.editPet(pet).pipe(map((editedPet) => PetActions.updatePet({ pet: editedPet }), 
+        this.petService.editPet(pet).pipe(
+          map((updatedPet) => PetActions.updatePetSuccess({ pet: updatedPet }), 
         console.log(pet.name + ' ovo je neki novi pet'))))
     )
   )
-}
+
+  addPet$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PetActions.addPet),
+      switchMap(({ pet }) =>
+        this.petService.addPet(pet).pipe(
+          map((addedPet) => PetActions.addPetSuccess({ pet: addedPet })),
+          catchError(error => of(PetActions.addPetFailure({ error })))
+        )
+      )
+    )
+  );
+
+  deletePet$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PetActions.deletePet),
+      mergeMap(({ id }) =>
+        this.petService.deletePet(id).pipe(
+          map(() => 
+            PetActions.deletePetSuccess({ id }),
+          ),
+          catchError((error) => of(PetActions.deletePetFailure({ error })))
+        )
+      )
+    )
+  );
+   }

@@ -32,9 +32,9 @@ export class PetserviceService {
     return this.http.get<Pet[]>(this.apiUrl);
   }
 
-  deletePet(pet: Pet): Observable<Pet> {
-    const url = `${this.apiUrl}/${pet.id}`;
-    console.log(pet);
+  deletePet(id: number): Observable<Pet> {
+    const url = `${this.apiUrl}/${id}`;
+    console.log();
     return this.http.delete<Pet>(url);
   }
 

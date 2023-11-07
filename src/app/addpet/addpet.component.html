@@ -1,16 +1,24 @@
-<form (ngSubmit)="onSubmit()">
+
+<form (ngSubmit)="onSubmit()"  #myForm="ngForm">
     <div class="form-holder">
         <div>
             <label for="name">Name: </label>
-            <input type="text" name="name" [(ngModel)]="name" id="name" placeholder="Pet name"/>
+            <input type="text" name="name" [(ngModel)]="name" id="name" placeholder="Pet name" />
+            <div *ngIf="myForm.controls.name.invalid && myForm.controls.name.errors?.invalidName">
+                Name must contain only letters.
+            </div>
         </div>
         <div>
             <label for="type">Type: </label>
             <input type="text" name="type" [(ngModel)]="type" id="type" placeholder="Pet type"/>
+            
         </div>
         <div>
             <label for="age">Age: </label>
-            <input type="number" name="age" [(ngModel)]="age" id="age" placeholder="Pet age"/>
+            <input type="number" name="age" [(ngModel)]="age" id="age" placeholder="Pet age" required appAgeValidator/>
+            <div *ngIf="myForm.controls.age.invalid && myForm.controls.age.errors?.invalidAge">
+                Age must contain only numbers.
+            </div>
         </div>
         <div>
             <label for="age">Pic: </label>
@@ -18,6 +26,4 @@
         </div>
         <button mat-button>Save</button>
     </div>
-    
-    
 </form>
