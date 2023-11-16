@@ -1,22 +1,20 @@
 
-<form (ngSubmit)="onSubmit()"  #myForm="ngForm">
+<form (ngSubmit)="onSubmit()"  #petForm="ngForm">
     <div class="form-holder">
         <div>
             <label for="name">Name: </label>
-            <input type="text" name="name" [(ngModel)]="name" id="name" placeholder="Pet name" />
-            <div *ngIf="myForm.controls.name.invalid && myForm.controls.name.errors?.invalidName">
-                Name must contain only letters.
-            </div>
+            <input type="text" name="name" [(ngModel)]="name" id="name" placeholder="Pet name" required pattern="[a-zA-Z]*"/>
+            <div *ngIf="!name && (petForm.controls.name.dirty || petForm.controls.name.touched)">Name is required.</div>
         </div>
         <div>
             <label for="type">Type: </label>
-            <input type="text" name="type" [(ngModel)]="type" id="type" placeholder="Pet type"/>
-            
+            <input type="text" name="type" [(ngModel)]="type" id="type" placeholder="Pet type" required pattern="[a-zA-Z]*"/>
+            <div *ngIf="!type && (petForm.controls.type.dirty || petForm.controls.type.touched)">Type is required.</div>
         </div>
         <div>
             <label for="age">Age: </label>
-            <input type="number" name="age" [(ngModel)]="age" id="age" placeholder="Pet age" required appAgeValidator/>
-            <div *ngIf="myForm.controls.age.invalid && myForm.controls.age.errors?.invalidAge">
+            <input type="number" name="age" [(ngModel)]="age" id="age" placeholder="Pet age" required pattern="[0-9]+"/>
+            <div *ngIf="!age && (petForm.controls.age.dirty || petForm.controls.age.touched)">
                 Age must contain only numbers.
             </div>
         </div>

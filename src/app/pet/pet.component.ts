@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Pet } from '../models/pet';
 import {MatButtonModule} from '@angular/material/button';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-pet',
@@ -12,10 +13,13 @@ export class PetComponent implements OnInit {
   @Input() pet: Pet;
   @Output() onDeletePet: EventEmitter<Pet> = new EventEmitter();
   @Output() onEditPet: EventEmitter<Pet> = new EventEmitter();
+  @Output() onSelectPet: EventEmitter<Pet> = new EventEmitter();
+
   //editedPet: Pet;
   editedPet: any = {};
   isEditing = false;
   editablePet: Pet;
+  petForm: FormGroup;
 
   constructor() { }
 
@@ -30,7 +34,7 @@ export class PetComponent implements OnInit {
 
   enableEditing() {
     this.isEditing = true;
-    this.editedPet = this.pet;
+    this.editedPet = {...this.pet};
     console.log(this.pet);
     console.log(this.isEditing);
 
@@ -41,18 +45,39 @@ export class PetComponent implements OnInit {
     console.log(this.isEditing);
   }
 
-  // onEdit(pet: Pet) {
-  //   this.editedPet = pet;
-  //   console.log(pet);
-  //   console.log(this.editedPet);
-  //   this.onEditPet.emit(pet);s
-  //   //this.editedPet = {...this.pet};
-  // }
+  onEdit() {
+    if (!this.validateForm()) {
+      console.log(this.petForm.value);
+      return;
+    } else {
+      const newPet = {id: this.pet.id, name: this.editedPet.name, type: this.editedPet.type, age: this.editedPet.age, pic: this.editedPet.pic, adopted: false}
 
-  onEdit(name: string, age: number, type: string) {
-    const newPet = {id: this.pet.id, name: name, type: type, age: age, pic: this.pet.pic, adopted: this.pet.adopted}
-    console.log(newPet);
-    this.onEditPet.emit(newPet);
+      console.log(newPet.name + ' '+ newPet.type)
+      this.onEditPet.emit(newPet);
     this.isEditing = !this.isEditing;
+    }
+    console.log(this.editedPet.name);
+  }
+
+  onSelect() {
+    console.log(this.pet);
+    this.onSelectPet.emit(this.pet);
+  }
+
+  private validateForm(): boolean {
+    if(!/^[a-zA-Z ]+$/.test(this.editedPet.name.trim())) {
+      alert('Name contains numbers.');
+      return false;
+    }
+    if (!this.editedPet.type.trim()) {
+      alert('Type is required.');
+      return false;
+    }
+
+    if (isNaN(this.editedPet.age) || this.editedPet.age === null) {
+      alert('Age must contain only numbers.');
+      return false;
+    }
+    return true;
   }
 }

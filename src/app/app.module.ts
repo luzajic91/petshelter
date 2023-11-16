@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { PetComponent } from './pet/pet.component';
 import { PetlistComponent } from './petlist/petlist.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,7 +19,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { PetEffects } from './state/pet.effects';
 import { NameValidatorDirective } from './name-validator.directive';
 import { AgeValidatorDirective } from './age-validator.directive';
+import { PetdetailComponent } from './petdetail/petdetail.component';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  { path: 'pets', component: PetlistComponent },
+  { path: 'pets/:id', component: PetdetailComponent }
+];
 
 @NgModule({
   declarations: [
@@ -29,7 +35,8 @@ import { AgeValidatorDirective } from './age-validator.directive';
     PeteditComponent,
     AddpetComponent,
     NameValidatorDirective,
-    AgeValidatorDirective
+    AgeValidatorDirective,
+    PetdetailComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,9 @@ import { AgeValidatorDirective } from './age-validator.directive';
     MatButtonModule,
     FormsModule,
     StoreModule.forRoot({pets: petReducer}),
-    EffectsModule.forRoot([PetEffects])
+    EffectsModule.forRoot([PetEffects]),
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

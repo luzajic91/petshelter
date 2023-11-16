@@ -1,0 +1,22 @@
+/* styles.css */
+
+.pet-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust the height based on your layout */
+  }
+  
+  .pet-holder_child {
+    text-align: center;
+  }
+  
+  /* Additional styling for the details */
+  .pet-holder_child p {
+    margin: 5px 0; /* Adjust the margin as needed */
+  }
+  
+  /* Optional: Center the text below the pet details */
+  p {
+    text-align: center;
+  }
