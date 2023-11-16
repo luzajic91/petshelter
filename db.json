@@ -19,64 +19,18 @@
   ],
   "pets": [
     {
-      "id": 23,
-      "name": "aa",
-      "type": "aa",
+      "id": 43,
+      "name": "ceyaraaaaa",
+      "type": "asdaaaaa",
+      "age": "222222",
+      "adopted": false
+    },
+    {
+      "id": 44,
+      "name": "ceyarAAA",
+      "type": "ssss",
       "age": 22,
-      "adopted": false
-    },
-    {
-      "id": 24,
-      "name": "newpet",
-      "type": "papet",
-      "age": 123,
-      "pic": "ddaa",
-      "adopted": false
-    },
-    {
-      "id": 25,
-      "name": "321",
-      "type": "321",
-      "age": 321,
       "pic": "123",
-      "adopted": false
-    },
-    {
-      "id": 26,
-      "name": "123",
-      "type": "123",
-      "age": 123,
-      "pic": "",
-      "adopted": false
-    },
-    {
-      "id": 27,
-      "name": "123",
-      "type": "23",
-      "age": 32,
-      "pic": "23",
-      "adopted": false
-    },
-    {
-      "id": 28,
-      "name": "ceyar",
-      "type": "asd",
-      "age": 1,
-      "adopted": false
-    },
-    {
-      "id": 29,
-      "name": "ceyar",
-      "adopted": false
-    },
-    {
-      "id": 30,
-      "name": "123",
-      "adopted": false
-    },
-    {
-      "id": 31,
-      "name": "asdsa",
       "adopted": false
     }
   ]

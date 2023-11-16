@@ -60,4 +60,9 @@ export class PetserviceService {
     const url = `${this.apiUrl}/${pet.id}`;
     return this.http.put<Pet>(url, pet, httpOptions);
   }
+
+  getPet(id: string): Observable<Pet> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Pet>(url);
+  }
 }
