@@ -23,6 +23,7 @@ import { PetdetailComponent } from './petdetail/petdetail.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: '', component: PetlistComponent },
   { path: 'pets', component: PetlistComponent },
   { path: 'pets/:id', component: PetdetailComponent }
 ];

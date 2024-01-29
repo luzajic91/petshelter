@@ -21,10 +21,18 @@ export class PetComponent implements OnInit {
   editablePet: Pet;
   petForm: FormGroup;
 
+  imageCat: string = "assets/images/CAT.png"
+  imageDog: string = "assets/images/DOG.jpg"
+
   constructor() { }
 
   ngOnInit(): void {
     this.editablePet = {...this.pet};
+  }
+
+  getImageSource(): string {
+    console.log(this.pet.name + "OVO SADA ISPISUJE");
+    return this.pet.name.length % 2 === 0 ? this.imageCat: this.imageDog;
   }
 
   onDelete(pet: Pet) {

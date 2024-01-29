@@ -15,6 +15,9 @@ export class PetdetailComponent implements OnInit {
   petId: string;
   pet: Pet;
 
+  imageCat: string = "assets/images/silly cat.jpg"
+  imageDog: string = "assets/images/silly dog.jpg"
+
   constructor(private route: ActivatedRoute, private petService: PetserviceService, private router: Router) {}
 
   ngOnInit(): void {
@@ -22,6 +25,11 @@ export class PetdetailComponent implements OnInit {
       this.petId = params['id'];
       this.loadPetDetails();
     });
+  }
+
+  getImageSource(): string {
+    console.log(this.pet.name + "OVO SADA ISPISUJE");
+    return this.pet.name.length % 2 === 0 ? this.imageCat: this.imageDog;
   }
 
   loadPetDetails() {

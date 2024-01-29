@@ -1,35 +1,52 @@
-<div class="pet-holder" *ngIf="!isEditing">
-
-    <div class="pet-holder_child">
-        <!-- <p>{{pet.id}}</p> -->
-        <p>{{pet.name}}</p>
-        <p>{{pet.age}}</p>
-        <p>{{pet.type}}</p>
-    </div>
-    <div class="pet-holder_child">
-        <button mat-button (click)="enableEditing()">Edit</button>
-        <button mat-button (click)="onDelete(pet)">Delete</button>
-        <button mat-button>Adopt</button>
-    </div>
-</div>
 <form #petForm="ngForm">
-<div class="pet-holder" *ngIf="isEditing">
-    <div class="pet-holder_child">
-        <input [(ngModel)]="editedPet.name" placeholder="{{ pet.name }}" name="name" #nameInput="ngModel"/>
-        <div *ngIf="!editedPet.name && (petForm.controls.name.dirty || petForm.controls.name.touched)">Name is required.</div>
-        <input [(ngModel)]="editedPet.type" placeholder="{{ pet.type }}" name="type" #typeInput="ngModel"/>
-        <div *ngIf="!editedPet.type && (petForm.controls.type.dirty || petForm.controls.type.touched)">Type is required.</div>
-        <input [(ngModel)]="editedPet.age" placeholder="{{ pet.age }}" name="age" #ageInput="ngModel"/>
-        <div *ngIf="!editedPet.age && (petForm.controls.age.dirty || petForm.controls.age.touched)">
-            Age must contain only numbers.
+    <div class="item-container" *ngIf="isEditing">
+        <img [src]="getImageSource()" alt="dog">
+        <div class="item-content">
+            <div class="item-title">
+                <label>Name:</label>
+                <input [(ngModel)]="editedPet.name" placeholder="{{ pet.name }}" name="name" #nameInput="ngModel"/>
+                <div *ngIf="!editedPet.name && (petForm.controls.name.dirty || petForm.controls.name.touched)">Name is required.</div>
+            </div>
+            <div>
+                <label>Description:</label>
+                <input [(ngModel)]="editedPet.type" placeholder="{{ pet.type }}" name="type" #typeInput="ngModel"/>
+                <div *ngIf="!editedPet.type && (petForm.controls.type.dirty || petForm.controls.type.touched)">Type is required.</div>
+            </div>
+            <div>
+                <label>Age:</label>
+                <input [(ngModel)]="editedPet.age" placeholder="{{ pet.age }}" name="age" #ageInput="ngModel"/>
+                <div *ngIf="!editedPet.age && (petForm.controls.age.dirty || petForm.controls.age.touched)">
+                    Age must contain only numbers.
+                </div>
+            </div>
+            <div class="item-buttons">
+            <button mat-button (click)="onDelete(pet)">Delete</button>
+            <button mat-button (click)="onEdit()">Save</button>
+            <button mat-button (click)="cancelEditing()">Cancel</button>
+            </div>
         </div>
     </div>
-    <div class="pet-holder_child">
-        <button mat-button (click)="cancelEditing()">Cancel</button>
-        <button mat-button (click)="onDelete(pet)">Delete</button>
-        <button mat-button (click)="onEdit()">Save</button>
+</form>
 
+<div class="item-container" *ngIf="!isEditing">
+    <img [src]="getImageSource()" alt="dog">
+    <div class="item-content">
+        <div class="item-title">
+            <label>Name:</label>
+            {{pet.name}}
+        </div>
+        <div>
+            <label>Description:</label>
+            {{pet.type}}
+        </div>
+        <div>
+            <label>Age:</label>
+            {{pet.age}}
+        </div>
+        <div class="item-buttons">
+            <button mat-button (click)="enableEditing()">Edit</button>
+        <button mat-button (click)="onDelete(pet)">Delete</button>
+        </div>
     </div>
 </div>
-</form>
 
